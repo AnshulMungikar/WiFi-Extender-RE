@@ -11,7 +11,7 @@
 # UART Access: Pin Identification and Confirmation 
 
 ## Summary
-Silkscreen labels on the UART do not match behavior(from multimeter observations). The pin labelled "RX" outputs the boot log (device TX). The pin labelled "TX" produced no output and its read function could not be confirmed. Console appears to be output-only.
+Silkscreen labels on the UART do not match behavior (from multimeter observations). The pin labelled "RX" (on device) outputs the boot log (device TX). The pin labelled (on device) "TX" produced no output and its read function could not be confirmed. Console appears to be output only.
 
 ![UART Labelled](Photos/UART_Labelled.png)
 
