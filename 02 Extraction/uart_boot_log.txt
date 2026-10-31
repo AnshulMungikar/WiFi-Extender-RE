@@ -1,0 +1,29 @@
+Decompressing...done
+
+
+CFE version 5.100.138.3 based on BBP 1.0.37 for BCM947XX (32bit,SP,LE)
+Build Date: 2011-05-26 10:33:50 4 (<redacted>)
+Copyright (C) 2000-2008 Broadcom Corporation.
+
+Init Arena
+Init Devs.
+Boot partition size = 131072(0x20000)
+Found an ST compatible serial flash with 128 64KB blocks; total size 8MB
+et0: Broadcom BCM47XX 10/100/1000 Mbps Ethernet Controller 5.100.138.3
+CPU type 0x19749: 300MHz
+Tot mem: 65536 KBytes
+
+CFE mem:    0x80700000 - 0x80798550 (623952)
+Data:       0x8072E3A0 - 0x807315C0 (12832)
+BSS:        0x807315C0 - 0x80732550 (3984)
+Heap:       0x80732550 - 0x80796550 (409600)
+Stack:      0x80796550 - 0x80798550 (8192)
+Text:       0x80700000 - 0x8072E39C (189340)
+
+Device eth0:  hwaddr FC-22-1C-3B-A8-14, ipaddr 192.168.11.1, mask 255.255.255.0
+        gateway not set, nameserver not set
+Loader:raw Filesys:raw Dev:flash0.os File: Options:(null)
+Loading: ....... 3727872 bytes read
+Entry at 0x80001000
+Closing network.
+Starting program at 0x80001000
