@@ -6,11 +6,10 @@ I had an old, unused WiFi extender lying around my house. Driven by curiosity, I
 - What does the firmware actually consist of?
 - Can I find any security vulnerabilities or misconfigurations in the device?
 
-**Status** : In progress (teardown complete)
 
 ## Target Device
 
-<img width="2258" height="1750" alt="board_labelled" src="https://github.com/user-attachments/assets/e2a93fbc-82e8-4c54-807c-f0c306ce0443" />
+![board_labelled](/01%20Teardown/Photos/board_labelled.png)
 
 ### Device Summary Table
 | Item | Detail | Notes | Datasheet |
