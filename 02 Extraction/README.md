@@ -8,10 +8,13 @@ How I tried to get the firmware off a generic Wi-Fi extender, first through UART
 
 **Hardware**
 - USB-to-serial (UART) adapter: [3.3V and 5V]
+- CH341A SPI programmer with SOIC-8 clip
+- Raspberry Pi Pico W (running pico-serprog)
 
 **Software**
 - OS: fedora
 - picocom: v2024-07
+- flashrom: v1.6.0
 
 
 ## Part 1: UART
@@ -50,4 +53,36 @@ After powering on the device, a boot log appeared in the terminal. The full log 
 
 - **Problem:** UART gave output only, with no way to interact.
 - **Likely cause:** Input from the adapter is not reaching the device, or console input is disabled in the firmware.
-- **Next step:** Read the firmware directly from the flash chip.
+
+
+
+## Part 2: SPI Flash Dump
+Full details, wiring, and logs: spi-dump.md
+
+**Goal:** Read the full 8 MB contents of the flash chip.
+
+### Wiring
+CH341A with SOIC-8 clip, connected in-circuit
+
+![Photo describing the CH341A wiring](/02%20Extraction/Photos/CH341A_Wiring.jpeg)
+
+### Command
+To identify the flash chip:
+```bash
+sudo flashrom -p ch341a_spi -V
+```
+To dump the firmware:
+```bash
+sudo flashrom -p ch341a_spi -r dump1.bin --progress
+```
+
+### Result
+- A CH341A with a clip never identified the chip. IDs varied between runs, and the board powered up from the programmer.
+- Raspberry Pico at 3.3 V gave the same failure, which ruled out the 5 V data lines as the main cause.
+
+### Observations
+The device powers on when connected to either the CH341A or the Pico. A multimeter continuity test showed that the flash chip's VCC pin is connected to the same 3.3 V rail as the UART "VCC" pad. This means that powering the chip from the programmer also powers the rest of the board.
+
+### What went wrong
+The rest of the board is active while reading in-circuit. The other component like CPU send clock, chip-select, and data lines at the same time as the programmer. 
+- **Next step:** Read the firmware directly from the flash chip by removing it from the circuit board.
